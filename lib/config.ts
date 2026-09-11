@@ -341,7 +341,7 @@ export const brandConfig = {
             "02 cards/carrossel",
             "Acompanhamento, roteirização, direção e posicionamento",
             "Edição dinâmica, cortes essenciais, legenda e trilha sonora",
-            "Entrega mensal, postagem 2x na semana"
+            "Entrega mensal, postagem 2x na semana feed"
           ],
           price: "R$ 600",
           paymentMethod: "Pix",
@@ -373,7 +373,7 @@ export const brandConfig = {
             "Gerenciamento de postagens e área de Destaques do Instagram, análise dos melhores dias e horários de postagens",
             "Acompanhamento, roteirização, direção e posicionamento",
             "Edição dinâmica, cortes essenciais, legenda e trilha sonora",
-            "Entrega mensal, postagem 2x na semana",
+            "Entrega mensal, postagem 2x na semana feed",
             "*Bônus: 05 capas para Destaques do Instagram.",
             "Card ou vídeo curto extra em caso de faltar."
           ],
