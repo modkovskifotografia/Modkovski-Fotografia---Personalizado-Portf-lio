@@ -129,12 +129,31 @@ export default function Packages() {
 
                       {/* Bullet features */}
                       <ul className="mt-4 space-y-2.5 text-xs text-brand-text-soft font-light">
-                        {pkg.features.map((feature, fIndex) => (
-                          <li key={fIndex} className="flex items-start gap-2 leading-relaxed">
-                            <Check className="w-3.5 h-3.5 text-brand-wine mt-0.5 shrink-0" strokeWidth={2} />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
+                        {pkg.features.map((feature, fIndex) => {
+                          const isBonus = feature.includes('Bônus:') || feature.startsWith('*Bônus');
+                          return (
+                            <li 
+                              key={fIndex} 
+                              className={`flex items-start gap-2 leading-relaxed ${
+                                isBonus ? 'pt-2 mt-2 border-t border-brand-wine/15 text-brand-text' : ''
+                              }`}
+                            >
+                              <Check 
+                                className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${
+                                  isBonus ? 'text-brand-wine stroke-[2.5]' : 'text-brand-wine'
+                                }`} 
+                                strokeWidth={isBonus ? 2.5 : 2} 
+                              />
+                              {isBonus ? (
+                                <strong className="font-bold text-brand-text whitespace-pre-line">
+                                  {feature}
+                                </strong>
+                              ) : (
+                                <span>{feature}</span>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
 
@@ -152,9 +171,11 @@ export default function Packages() {
                         </span>
                       </div>
                       
-                      <div className="flex items-center gap-1 text-[10px] text-brand-text-soft mb-2.5">
-                        <CreditCard className="w-3 h-3 text-brand-wine/60" />
-                        <span>Reserva via sinal de 30%</span>
+                      <div className="flex items-center gap-1.5 text-[10px] text-brand-text-soft mb-2.5">
+                        <CreditCard className="w-3 h-3 text-brand-wine/60 shrink-0" />
+                        <span className="font-medium text-brand-text">
+                          {pkg.paymentCondition || (section.id === 'sec-2' ? 'Pagamento integral para utilizar' : 'Reserva via sinal de 30%')}
+                        </span>
                       </div>
 
                       {/* Divider line below reserva */}
