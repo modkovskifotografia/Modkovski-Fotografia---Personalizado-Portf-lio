@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { brandConfig, InstallmentOption, PackageItem } from '@/lib/config';
-import { Check, MessageCircle, CreditCard, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { Check, MessageCircle, CreditCard, ChevronDown, CheckCircle2, Info } from 'lucide-react';
 import BeforeAfterSlider from './BeforeAfterSlider';
 
 export default function Packages() {
@@ -130,22 +130,22 @@ export default function Packages() {
                       {/* Bullet features */}
                       <ul className="mt-4 space-y-2.5 text-xs text-brand-text-soft font-light">
                         {pkg.features.map((feature, fIndex) => {
-                          const isBonus = feature.includes('Bônus:') || feature.startsWith('*Bônus');
+                          const isBonusHeader = feature.includes('Bônus:') || feature.startsWith('*Bônus');
+                          const isBonusExtra = feature.startsWith('Card ou vídeo curto extra');
+                          const isBold = isBonusHeader || isBonusExtra;
                           return (
                             <li 
                               key={fIndex} 
                               className={`flex items-start gap-2 leading-relaxed ${
-                                isBonus ? 'pt-2 mt-2 border-t border-brand-wine/15 text-brand-text' : ''
+                                isBonusHeader ? 'pt-2 mt-2 border-t border-brand-wine/15 text-brand-text' : isBonusExtra ? 'text-brand-text' : ''
                               }`}
                             >
                               <Check 
-                                className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${
-                                  isBonus ? 'text-brand-wine stroke-[2.5]' : 'text-brand-wine'
-                                }`} 
-                                strokeWidth={isBonus ? 2.5 : 2} 
+                                className="w-3.5 h-3.5 mt-0.5 shrink-0 text-brand-wine" 
+                                strokeWidth={isBold ? 2.5 : 2} 
                               />
-                              {isBonus ? (
-                                <strong className="font-bold text-brand-text whitespace-pre-line">
+                              {isBold ? (
+                                <strong className="font-bold text-brand-text">
                                   {feature}
                                 </strong>
                               ) : (
@@ -303,6 +303,38 @@ export default function Packages() {
               })}
             </div>
 
+            {/* Observation Note */}
+            {section.note && (
+              <div 
+                id={`section-note-${section.id}`}
+                className="mt-8 p-5 sm:p-6 bg-brand-cream/80 border border-brand-wine/20 rounded-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs"
+              >
+                <div className="flex items-start gap-3.5 max-w-3xl">
+                  <div className="w-8 h-8 rounded-full bg-brand-wine/10 text-brand-wine flex items-center justify-center shrink-0 mt-0.5">
+                    <Info className="w-4 h-4" strokeWidth={1.75} />
+                  </div>
+                  <div className="text-xs sm:text-sm text-brand-text leading-relaxed font-light">
+                    <span className="font-semibold tracking-wider text-brand-wine uppercase text-[11px] sm:text-xs block sm:inline sm:mr-2">
+                      Observação:
+                    </span>
+                    Para cobertura de palestras e eventos, o investimento é de <strong className="font-semibold text-brand-wine">R$ 150,00</strong> para até 2 horas de duração. Horários e valores também podem ser ajustados e personalizados de acordo com a necessidade do seu evento.
+                  </div>
+                </div>
+
+                {section.note.whatsAppText && (
+                  <a
+                    href={`https://wa.me/${brandConfig.whatsApp.number}?text=${encodeURIComponent(section.note.whatsAppText)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-4 py-2.5 text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-wine bg-white border border-brand-wine/30 hover:bg-brand-wine hover:text-white transition-all duration-200 flex items-center gap-1.5 self-stretch md:self-auto justify-center shadow-2xs cursor-pointer"
+                    id={`note-whatsapp-${section.id}`}
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 shrink-0" strokeWidth={1.75} />
+                    <span>CONSULTAR EVENTO</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </section>
           {sIndex === 0 && <BeforeAfterSlider />}

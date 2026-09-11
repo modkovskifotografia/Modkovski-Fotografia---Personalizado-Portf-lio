@@ -3,6 +3,12 @@ export interface InstallmentOption {
   value: string;
 }
 
+export interface PackageSectionNote {
+  text: string;
+  highlightPrice?: string;
+  whatsAppText?: string;
+}
+
 export interface PackageItem {
   id: string;
   name: string;
@@ -319,6 +325,11 @@ export const brandConfig = {
       eyebrow: "A proposta",
       title: "Produção de vídeo",
       description: "Preparamos quatro formatos de produção de vídeo para atender à sua estratégia, do modelo prático ao nível autoridade. Caso sua estratégia necessite de uma quantidade específica de vídeos, nos informe para ajustarmos.",
+      note: {
+        text: "Para cobertura de palestras e eventos, o investimento é de R$ 150,00 para até 2 horas de duração. Horários e valores também podem ser ajustados e personalizados de acordo com a necessidade do seu evento.",
+        highlightPrice: "R$ 150,00",
+        whatsAppText: "Olá! Vi a proposta da Modkovski Fotografia e gostaria de conversar sobre a cobertura de palestras e eventos."
+      },
       packages: [
         {
           id: "pkg-dup-01",
@@ -363,7 +374,8 @@ export const brandConfig = {
             "Acompanhamento, roteirização, direção e posicionamento",
             "Edição dinâmica, cortes essenciais, legenda e trilha sonora",
             "Entrega mensal, postagem 2x na semana",
-            "*Bônus: 05 capas para Destaques do Instagram.\nCard ou vídeo curto extra em caso de faltar."
+            "*Bônus: 05 capas para Destaques do Instagram.",
+            "Card ou vídeo curto extra em caso de faltar."
           ],
           price: "R$ 700",
           paymentMethod: "Pix",
@@ -397,7 +409,8 @@ export const brandConfig = {
             "Acompanhamento, roteirização, direção e posicionamento",
             "Edição dinâmica, cortes essenciais, legenda e trilha sonora",
             "Entrega mensal, postagem 3x na semana feed e 2x na semana story",
-            "*Bônus: 05 capas para Destaques do Instagram.\nCard ou vídeo curto extra em caso de faltar."
+            "*Bônus: 05 capas para Destaques do Instagram.",
+            "Card ou vídeo curto extra em caso de faltar."
           ],
           price: "R$ 1.150",
           paymentMethod: "Pix",
@@ -433,7 +446,8 @@ export const brandConfig = {
             "Acompanhamento, roteirização, direção e posicionamento",
             "Edição dinâmica, cortes essenciais, legenda e trilha sonora",
             "Entrega mensal, postagem 4x na semana feed e 3x na semana story",
-            "*Bônus: 05 capas para Destaques do Instagram.\nCard ou vídeo curto extra em caso de faltar."
+            "*Bônus: 05 capas para Destaques do Instagram.",
+            "Card ou vídeo curto extra em caso de faltar."
           ],
           price: "R$ 1.400",
           paymentMethod: "Pix",
