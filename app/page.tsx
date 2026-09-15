@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Portfolio from '@/components/Portfolio';
@@ -12,6 +13,9 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 export default function Home() {
   return (
     <main className="w-full relative min-h-screen flex flex-col bg-brand-cream selection:bg-brand-wine selection:text-white" id="main-homepage">
+      {/* Navegação Principal */}
+      <Navbar />
+
       {/* 1. Apresentação da Marca & Proposta no Hero */}
       <Hero />
       

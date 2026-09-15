@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { brandConfig } from '@/lib/config';
 import { Instagram, Camera, Heart } from 'lucide-react';
 
@@ -26,6 +27,22 @@ export default function Footer() {
 
         {/* Elegant horizontal line divider */}
         <div className="w-16 h-[1px] bg-white/10 my-4" />
+
+        {/* Quick Route Links */}
+        <nav className="flex flex-wrap items-center justify-center gap-6 my-3 text-[11px] uppercase tracking-[0.2em]">
+          <Link href="/" className="text-white/60 hover:text-white transition-colors">
+            Início
+          </Link>
+          <Link href="/casamento" className="text-white/60 hover:text-white transition-colors">
+            Casamento
+          </Link>
+          <Link href="/eventos" className="text-white/60 hover:text-white transition-colors">
+            Eventos
+          </Link>
+          <Link href="/portfolio" className="text-white/60 hover:text-white transition-colors">
+            Portfólio
+          </Link>
+        </nav>
 
         {/* Instagram signature row */}
         <div className="mb-8">
